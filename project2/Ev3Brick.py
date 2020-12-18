@@ -1,7 +1,12 @@
 class Ev3Brick:
-    
-    def __init__(self): # Construct
-        print("KALESATE STA KENTRIKA GRAFEIA TOU FUNCTION")
-    
-    def move():
+    n_motor_ports = 4
+    n_sensor_ports = 4
+
+    def __init__(self):  # Construct
+        print("INIT FUNCTION")
+
+    def move(self):
         print('Move')
+
+    def destroy(self):
+        print('Destroy')

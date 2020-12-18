@@ -1,23 +1,39 @@
 from Ev3Brick import Ev3Brick
 from Motor import Motor
+from Sensor import Sensor
 from Port import Port
 from DriveBase import DriveBase
-    
+
 ev3 = Ev3Brick()
 
-left_motor = Motor(Port.B)
+left_motor = Motor(port=Port.B, isBig=True)
 right_motor = Motor(Port.C)
 
-robot = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=104)
+touch_sensor = Sensor(port=Port.S1, type="touch")
+color_sensor = Sensor(port=Port.S2, type="color")
 
-first_position = 100
+robot = DriveBase(left_motor,
+                  right_motor,
+                  55.5,
+                  104,
+                  sensors=[touch_sensor, color_sensor])
+robot.print_sensor()
 
-robot.straight(1000)
+first_position = 0
 
-robot.straight(-600)
+# robot.straight(1000)
 
-robot.straight(250)
+robot.turn(50)
 
-robot.straight(-100)
+robot.turn(50)
+robot.turn(450)
 
-print(robot.position)
+robot.turn(6650)
+robot.turn(150)
+robot.turn(50)
+
+robot.turn(450)
+
+print(robot.get_degrees())
+
+# print(robot.position)
